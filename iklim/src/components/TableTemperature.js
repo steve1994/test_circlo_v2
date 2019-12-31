@@ -5,15 +5,21 @@ import {connect} from 'react-redux'
 
 class TableTemperature extends React.Component {
 
-    componentDidUpdate() {
-        if (this.props.city == 'jkt') {
-            this.props.loadWeather(cityCode.cityCodeJakarta);
-        } else if (this.props.city == 'bk') {
-            this.props.loadWeather(cityCode.cityCodeBangkok);
-        } else if (this.props.city == 'sg') {
-            this.props.loadWeather(cityCode.cityCodeSingapore);
-        } else if (this.props.city == 'mn') {
-            this.props.loadWeather(cityCode.cityCodeManila);
+    componentDidUpdate(prevProps) {
+        if (this.props.city != prevProps.city) {
+            switch (this.props.city) {
+                case 'jkt':
+                    this.props.loadWeather(cityCode.cityCodeJakarta);
+                    break;
+                case 'bk':
+                    this.props.loadWeather(cityCode.cityCodeBangkok);
+                    break;
+                case 'sg':
+                    this.props.loadWeather(cityCode.cityCodeSingapore);
+                    break;
+                case 'mn':
+                    this.props.loadWeather(cityCode.cityCodeManila);
+            }
         }
     }
 

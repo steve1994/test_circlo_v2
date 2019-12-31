@@ -27,6 +27,7 @@ export const loadWeather = (cityID) => {
             }
         })
         .then(function (response) {
+            console.log(response.data.list);
             dispatch(loadWeatherSuccess(response.data.list));
         })
         .catch(function (error) {
